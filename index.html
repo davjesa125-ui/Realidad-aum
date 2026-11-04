@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memoria Viva AR</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #111; font-family: system-ui, sans-serif; }
+  #ui { position: fixed; inset: 0; pointer-events: none; }
+  #ui > * { pointer-events: auto; }
+  #btn-ar { position: absolute; left: 50%; bottom: 8%; transform: translateX(-50%);
+    padding: 14px 28px; border: 0; border-radius: 999px; font-size: 1rem; color: #fff;
+    background: rgba(255,255,255,.18); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.3); }
+  #ficha { position: absolute; left: 16px; right: 16px; bottom: 16px; padding: 14px 16px; color: #fff;
+    border-radius: 18px; background: rgba(20,20,20,.45); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.2); opacity: 0; transition: opacity .3s; }
+  #ficha.visible { opacity: 1; }
+  #ficha h2 { margin: 0 0 4px; font-size: 1rem; }
+  #ficha p { margin: 0; font-size: .85rem; opacity: .9; }
+  #capa { position: absolute; top: 16px; left: 16px; right: 16px; }
+  #fallback { position: absolute; top: 40%; left: 10%; right: 10%; color: #fff; text-align: center; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <input id="capa" type="range" min="0.1" max="1" step="0.05" value="1" aria-label="Opacidad de la foto">
+  <div id="ficha"></div>
+  <button id="btn-ar">Entrar en realidad aumentada</button>
+  <div id="fallback" hidden>Este dispositivo no admite WebXR. Probá con Chrome en un Android compatible con ARCore.</div>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>
